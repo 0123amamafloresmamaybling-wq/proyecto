@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nosotros</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Tinos&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .encabezado h1, .titulo-dorado { color: var(--dorado); font-size: clamp(28px, 5vw, 40px); }
+    .tarjeta { font-size: clamp(18px, 3.2vw, 30px); line-height: 1.15; color: var(--rosa); }
+    .tarjeta h2 { font-weight: 400; font-size: 1em; color: var(--dorado); margin-bottom: 0.4em; }
+    .rejilla > .tarjeta:first-child { grid-column: auto; }
+    @media (min-width: 700px) and (max-width: 1024px) { .rejilla > .tarjeta:first-child { grid-column: 1 / -1; } }
+  </style>
+</head>
+<body class="pagina" style="--fondo: url('image.png');">
+  <div class="contenedor">
+    <header class="encabezado">
+      <h1>Nosotros</h1>
+    </header>
+
+    <main>
+      <div class="rejilla dos tres">
+        <article class="tarjeta">
+          <h2>¿Quiénes somos?</h2>
+          <p>Creamos esta página para mostrar cómo el color y el origen de una persona pueden cambiar la forma en que la juzgamos.</p>
+        </article>
+        <article class="tarjeta">
+          <h2>Nuestro propósito</h2>
+          <p>Invitar a mirar más allá de las apariencias, con ideas de la filosofía clásica.</p>
+        </article>
+        <article class="tarjeta">
+          <h2>Equipo</h2>
+          <p>Javier Tasho Copa Flores.- diseño, textos y programación.</p>
+        </article>
+      </div>
+    </main>
+  </div>
+
+  <footer class="pie">
+    <a href="../index.html">←Atrás</a>
+    <span class="copy">© 2026 Mi Proyecto. Todos los derechos reservados.</span>
+  </footer>
+</body>
+</html>
