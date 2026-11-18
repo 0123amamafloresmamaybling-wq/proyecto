@@ -1,8 +1,3 @@
-/* =====================================================
-   index.css  ·  Solo lo que usa index.html
-   Celular (base) → Tablet (768 px) → PC (1024 px)
-   ===================================================== */
-
 
 /* =====================================================
    1. CELULAR  (estilos base)
@@ -266,3 +261,5 @@ main { flex: 1; padding-block: 20px; }
 @media (prefers-reduced-motion: reduce) {
   .tarjeta, .reflexion { animation: none; }
 }
+
+
