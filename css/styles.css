@@ -1,3 +1,18 @@
+/* =====================================================
+   PUNTO DE VISTA — hoja de estilos (solo la página de INICIO)
+   Orden:  1. CELULAR (base)  ·  2. TABLET (768 px)  ·  3. PC (1024 px)
+   Los estilos base son los del celular; tablet y PC solo
+   cambian lo que necesitan (tamaños, columnas, espacios).
+   ===================================================== */
+
+/* ---------- Fuentes locales (funcionan sin internet) ---------- */
+@font-face { font-family: 'Tinos'; font-style: normal; font-weight: 400; font-display: swap;
+  src: local('Tinos'), url('../fonts/tinos-400.woff') format('woff'); }
+@font-face { font-family: 'Tinos'; font-style: normal; font-weight: 700; font-display: swap;
+  src: local('Tinos Bold'), url('../fonts/tinos-700.woff') format('woff'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap;
+  src: local('Inter'), url('../fonts/inter-400.woff') format('woff'); }
+
 
 /* =====================================================
    1. CELULAR  (estilos base)
@@ -9,211 +24,318 @@
   --fondo-pagina: #14213D;
   --panel: #1B2A46;
   --dorado: #C5A46D;
+  --dorado-2: #C9A66B;
   --linea: #A29979;
   --letra: #F7E9F9;
+  --gris: #D9D9D9;
   --blanco: #FFFFFF;
+  --filete: rgba(162, 153, 121, 0.4);
   --serif: 'Tinos', 'Times New Roman', Times, serif;
-  --sans: 'Inter', system-ui, sans-serif;
+  --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --margen: 16px;
 }
 
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
 body {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   font-family: var(--serif);
   color: var(--blanco);
   background: var(--fondo-pagina);
+  overflow-wrap: break-word;
 }
 
+img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 a:hover, a:focus-visible { color: var(--dorado); }
+:focus-visible { outline: 2px solid var(--dorado); outline-offset: 3px; }
 
 .contenedor {
   width: 100%;
-  max-width: 1296px;
+  max-width: 1440px;              /* 1296 de contenido + 72 de margen a cada lado */
   margin-inline: auto;
   padding-inline: var(--margen);
 }
 
-main { flex: 1; padding-block: 20px; }
-
-/* ---- Barra superior ---- */
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 16px;
-  padding-block: 16px;
-  border-bottom: 1px solid rgba(162, 153, 121, 0.4);
-}
-.nav .marca { font-size: 20px; color: var(--dorado); }
-.nav ul { display: flex; gap: 16px; list-style: none; font-size: 16px; color: var(--letra); }
+main { flex: 1; width: 100%; }
+.contenedor > main { padding-block: 24px; }
 
 .etiqueta {
+  display: block;
   font-family: var(--sans);
   font-size: 12px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
+  line-height: 1.45;
   color: var(--dorado);
 }
 
-/* ---- Título principal ---- */
-.hero { padding-block: 32px 24px; }
+/* ---- Barra superior (Inicio) ---- */
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px 24px;
+  padding-block: 20px 14px;
+  border-bottom: 1px solid var(--filete);
+}
+.nav .marca { font-size: 22px; color: var(--dorado); }
+.nav ul { display: flex; flex-wrap: wrap; gap: 4px 20px; list-style: none; font-size: 17px; color: var(--letra); }
+.nav li a { display: inline-block; padding-block: 6px; }
+.nav a[aria-current="page"] { color: var(--dorado); }
+
+/* ---- Título principal (Inicio) ---- */
+.eje { position: relative; }          /* lleva la barra dorada vertical (tablet y PC) */
+
+.hero { padding-block: 0 24px; }
 .hero h1 {
-  margin-top: 12px;
+  margin-top: 14px;
   font-weight: 400;
-  font-size: 32px;
-  line-height: 1.3;
+  font-size: 30px;
+  line-height: 1.35;
   color: var(--dorado);
 }
+.hero h1 .l1 {
+  display: block;
+  width: min(827px, 100%);
+  border-bottom: 4px solid var(--dorado);
+  margin-bottom: 0.12em;
+}
 
-.seccion { margin-top: 28px; }
-.seccion > .etiqueta { display: block; margin-bottom: 16px; }
+.seccion { padding-block: 8px; }
+.seccion + .seccion { margin-top: 28px; }
 
 /* ---- Tarjetas de temas ---- */
-.rejilla { display: grid; gap: 16px; grid-template-columns: 1fr; }
-.rejilla > :nth-child(2) { animation-delay: 0.1s; }
-.rejilla > :nth-child(3) { animation-delay: 0.2s; }
-
-.tarjeta {
-  background: rgba(27, 42, 70, 0.8);
-  border: 1px solid rgba(162, 153, 121, 0.4);
-  border-radius: 14px;
-  padding: 16px;
-  animation: tarjeta-entrada 0.35s ease-out both;
-}
-
-@keyframes tarjeta-entrada {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+.temas { display: grid; gap: 20px; margin-top: 18px; }
+.temas > :nth-child(2) { animation-delay: 0.1s; }
+.temas > :nth-child(3) { animation-delay: 0.2s; }
 
 .tema {
+  position: relative;
   display: grid;
-  gap: 12px;
-  align-items: center;
   grid-template-columns: 1fr;
+  gap: 10px;
+  align-items: center;
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 18px 16px;
   color: var(--letra);
+  animation: entrada 0.35s ease-out both;
 }
 .tema .boton {
   justify-self: start;
-  font-size: 24px;
+  font-size: 26px;
   line-height: 1.15;
-  padding: 6px 22px;
+  padding: 4px 22px 4px 0;
   border-radius: 22px;
   color: var(--blanco);
-  transition: background 0.2s;
+  transition: background .2s, color .2s, padding .2s;
 }
-.tema .boton:hover,
-.tema .boton:focus-visible { background: var(--dorado); color: var(--blanco); }
+.tema:nth-child(1) .boton { color: var(--gris); }
+/* El enlace cubre toda la tarjeta: más fácil de tocar con el dedo */
+.tema .boton::after { content: ""; position: absolute; inset: 0; border-radius: 14px; }
+.tema:hover .boton,
+.tema:focus-within .boton { background: var(--dorado-2); color: var(--blanco); padding-left: 22px; }
 .tema p { font-size: 18px; line-height: 1.35; }
 
 /* ---- Compartir punto de vista ---- */
-.lema { font-size: 24px; line-height: 1.4; color: var(--letra); margin-bottom: 20px; }
+.lema { margin: 10px 0 22px; font-weight: 400; font-size: 26px; line-height: 1.45; color: var(--letra); }
 
-.dos-paneles { display: grid; gap: 20px; grid-template-columns: 1fr; }
+.dos-paneles { display: grid; gap: 24px; grid-template-columns: 1fr; align-items: stretch; }
 
-.panel { background: var(--panel); border-radius: 20px; padding: 18px; }
+.panel { background: var(--panel); border-radius: 20px; padding: 18px; min-height: 420px; }
 .panel .etiqueta { font-size: 13px; }
 
-.reflexion-lista { display: grid; gap: 14px; margin-top: 16px; }
-.reflexion {
-  font-size: 20px;
-  line-height: 1.25;
-  padding: 16px;
-  border: 1px solid rgba(162, 153, 121, 0.3);
-  border-radius: 12px;
-  animation: tarjeta-entrada 0.35s ease-out both;
+/* ---- Para reflexionar (carrusel solo con CSS) ----
+   Los botones de opción (radio) y la casilla (checkbox) están ocultos a la vista pero
+   siguen funcionando con teclado y lector de pantalla: no hace falta JavaScript. */
+.oculto {
+  position: fixed; top: 0; left: 0; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; opacity: 0; pointer-events: none;
+  /* "fixed" los deja siempre dentro de la pantalla: al tocar una flecha la página no salta */
 }
-.reflexion:nth-child(2) { animation-delay: 0.1s; }
-.reflexion:nth-child(3) { animation-delay: 0.2s; }
 
-/* ---- Panel de conversaciones ---- */
-.chats { border: 1px solid var(--linea); }
+.reflexion { display: flex; flex-direction: column; }
+.reflexion .etiqueta { font-size: 14px; }
+
+.carrusel { position: relative; flex: 1; display: flex; flex-direction: column; margin-top: 16px; }
+
+.slide { display: none; }
+#r1:checked ~ .slides .s1,
+#r2:checked ~ .slides .s2,
+#r3:checked ~ .slides .s3 { display: block; animation: entrada .35s ease-out both; }
+
+.slide p { font-size: 24px; line-height: 1.15; color: var(--blanco); max-width: 600px; min-height: 2.3em; }
+
+.imagen { margin: 8px 0 0 0; width: min(368px, 78%); aspect-ratio: 1; border-radius: 10px; }
+.imagen img { width: 100%; height: 100%; object-fit: contain; }
+
+.controles { margin-top: auto; padding-top: 20px; display: flex; align-items: center; gap: 12px; }
+
+.flechas { display: none; gap: 12px; }
+#r1:checked ~ .controles .f1,
+#r2:checked ~ .controles .f2,
+#r3:checked ~ .controles .f3 { display: flex; }
+
+.flecha {
+  display: grid; place-items: center; cursor: pointer; user-select: none;
+  width: 44px; height: 44px;           /* tamaño cómodo para el dedo */
+  border: 1px solid var(--dorado);
+  border-radius: 10px;
+  color: var(--dorado);
+  font: 18px var(--sans);
+  transition: background .2s, color .2s;
+}
+.flecha:hover { background: var(--dorado); color: var(--fondo-pagina); }
+
+.puntos { display: flex; gap: 6px; margin-left: auto; }
+.punto { position: relative; width: 28px; height: 44px; cursor: pointer; }   /* área táctil grande */
+.punto::before {
+  content: ""; position: absolute; left: 50%; top: 50%;
+  width: 10px; height: 10px; margin: -5px 0 0 -5px;
+  border-radius: 50%; background: var(--linea); opacity: .5; transition: .2s;
+}
+#r1:checked ~ .controles label[for="r1"]::before,
+#r2:checked ~ .controles label[for="r2"]::before,
+#r3:checked ~ .controles label[for="r3"]::before { background: var(--dorado); opacity: 1; transform: scale(1.3); }
+
+#r1:focus-visible ~ .controles label[for="r1"],
+#r2:focus-visible ~ .controles label[for="r2"],
+#r3:focus-visible ~ .controles label[for="r3"] { outline: 2px solid var(--dorado); outline-offset: 2px; border-radius: 8px; }
+
+/* ---- Panel de conversaciones (Expandir solo con CSS) ---- */
+.chats { border: 1px solid var(--linea); display: flex; flex-direction: column; }
 .chats-cab { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-.chats h2 { font-weight: 400; font-size: 24px; color: var(--letra); }
+.chats h2 { font-weight: 400; font-size: 24px; line-height: 1.45; color: var(--letra); }
 .chats .sub {
   font-family: var(--sans);
   font-size: 16px;
+  line-height: 1.45;
   color: var(--letra);
-  margin-top: 10px;
+  margin-top: 4px;
   padding-bottom: 16px;
-  border-bottom: 1px solid rgba(162, 153, 121, 0.4);
+  border-bottom: 1px solid var(--filete);
 }
 
 .btn-expandir {
-  font-family: var(--sans);
-  font-size: 16px;
+  display: inline-grid; place-items: center; user-select: none;
+  font: 16px/1.45 var(--sans);
   color: var(--dorado);
-  background: none;
   border: 1px solid var(--dorado);
   border-radius: 10px;
-  padding: 8px 18px;
+  padding: 0 20px;
+  min-height: 44px;                    /* tamaño cómodo para el dedo */
+  min-width: 110px;
   cursor: pointer;
-  min-height: 44px; /* tamaño cómodo para el dedo */
+  transition: background .2s, color .2s;
 }
+.btn-expandir:hover,
+#expandir:focus-visible + .chats .btn-expandir { background: var(--dorado); color: var(--fondo-pagina); }
 
-.chats-cuerpo { margin-top: 20px; }
-.chats-cuerpo[hidden] { display: none; }
-.chats-cuerpo h3 { font-weight: 400; font-size: 24px; color: var(--letra); margin: 6px 0 10px; }
-.chats-cuerpo p { font-family: var(--sans); font-size: 16px; line-height: 1.45; color: var(--letra); }
+.t-con { display: none; }
+#expandir:checked + .chats .t-exp { display: none; }
+#expandir:checked + .chats .t-con { display: inline; }
+#expandir:checked + .chats { min-height: 560px; }
+
+.chats-cuerpo { flex: 1; display: flex; flex-direction: column; padding: 18px 0 0; }
+.chats-cuerpo h3 { font-weight: 400; font-size: 25px; line-height: 1.45; color: var(--letra); margin: 10px 0 8px; }
+.chats-cuerpo p { font: 16px/1.45 var(--sans); color: var(--letra); max-width: 28em; }
+.chats-cuerpo .reservado { margin-top: 24px; font-size: 12px; }
 
 .entrada {
-  margin-top: 20px;
+  margin-top: auto;
   background: var(--fondo-pagina);
   border-radius: 12px;
-  padding: 20px 16px;
-  font-family: var(--sans);
-  font-size: 16px;
+  min-height: 70px;
+  padding: 22px 16px;
+  font: 16px/1.45 var(--sans);
   color: var(--letra);
 }
 
 /* ---- Pie de página ---- */
 .pie {
   width: 100%;
-  max-width: 1296px;
+  max-width: 1440px;
   margin-inline: auto;
-  padding: 20px var(--margen) 24px;
+  padding: 20px var(--margen) 18px;
+  display: flex;
+  flex-direction: column;          /* en celular: uno debajo de otro */
+  align-items: center;
+  gap: 12px;
   text-align: center;
   font-size: 16px;
   line-height: 1.15;
   color: var(--dorado);
-  border-top: 1px solid rgba(162, 153, 121, 0.4);
+}
+.pie.linea { border-top: 1px solid var(--filete); }
+.pie a { color: var(--blanco); font-size: 20px; padding-block: 6px; }
+.pie a:hover, .pie a:focus-visible { color: var(--dorado); }
+.pie .copy { order: 3; font-size: 14px; }
+
+/* ---- Animación de entrada (solo opacity y transform: fluida en celular) ---- */
+@keyframes entrada {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 
 /* =====================================================
-   2. TABLET  (768 px a 1023 px)
+   2. TABLET  (768 px en adelante)
    ===================================================== */
 @media (min-width: 768px) {
   :root { --margen: 40px; }
 
-  .tarjeta, .reflexion { animation-duration: 0.45s; }
+  @keyframes entrada {
+    from { opacity: 0; transform: translateY(24px) scale(.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .tema, #r1:checked ~ .slides .s1, #r2:checked ~ .slides .s2, #r3:checked ~ .slides .s3 { animation-duration: .45s; }
 
-  main { padding-block: 36px; }
-
-  .nav { padding-block: 28px 16px; }
-  .nav .marca { font-size: 26px; }
-  .nav ul { gap: 32px; font-size: 20px; }
-
+  .contenedor > main { padding-block: 38px; }
   .etiqueta { font-size: 14px; }
-  .hero { padding-block: 56px 32px; }
+
+  /* Inicio */
+  .nav { padding-block: 26px 14px; }
+  .nav ul { gap: 4px 38px; font-size: 18px; }
+
+  .eje::before {                       /* barra dorada vertical del diseño */
+    content: "";
+    position: absolute;
+    left: -18px;
+    top: 56px;
+    bottom: 0;
+    width: 4px;
+    background: var(--dorado);
+  }
+  .hero { padding-block: 0 32px; }
   .hero h1 { font-size: 46px; }
-  .seccion { margin-top: 40px; }
+  .seccion { padding-block: 16px; }
+  .seccion + .seccion { margin-top: 40px; }
 
-  .tema .boton { font-size: 32px; }
-  .tema p { font-size: 22px; }
-  .lema { font-size: 32px; }
+  .tema { padding: 18px 20px; }
+  .tema .boton { font-size: 28px; }
 
+  .lema { font-size: 30px; }
   .panel { padding: 24px; }
-  .reflexion { font-size: 24px; }
-  .chats h2 { font-size: 28px; }
-  .chats-cuerpo h3 { font-size: 30px; }
+  .carrusel { margin-top: 30px; }
+  .slide p { font-size: 26px; }
+  .imagen { margin-left: 24px; }
+  .chats h2 { font-size: 26px; }
+  .chats-cuerpo { padding: 40px 10px 0; }
+  .chats-cuerpo h3 { font-size: 28px; }
   .chats-cuerpo p { font-size: 18px; }
+  .chats-cuerpo .reservado { margin-top: 40px; }
+  .entrada { font-size: 17px; padding: 22px 20px; }
 
-  .pie { font-size: 20px; }
-}
+  /* Pie: en una fila */
+  .pie { flex-direction: row; flex-wrap: wrap; justify-content: space-between; text-align: left; padding-bottom: 31px; font-size: 18px; }
+  .pie a { font-size: 23px; }
+  .pie .copy { order: 0; font-size: 15px; }
+  }
 
 
 /* =====================================================
@@ -222,44 +344,54 @@ main { flex: 1; padding-block: 20px; }
 @media (min-width: 1024px) {
   :root { --margen: 72px; }
 
-  main { padding-block: 56px; }
-
-  .nav { padding-block: 48px 16px; }
-  .nav .marca { font-size: 30px; }
-  .nav ul { gap: 40px; font-size: 22px; }
-
+  .contenedor > main { padding-block: 70px; }
   .etiqueta { font-size: 16px; }
-  .hero { padding-block: 96px 56px; }
-  .hero h1 { font-size: 60px; line-height: 1.35; }
-  .seccion { margin-top: 56px; }
+
+  /* Inicio */
+  .nav { padding-block: 48px 14px; }
+  .nav .marca { font-size: 30px; }
+  .nav ul { gap: 4px 72px; font-size: 22px; }
+
+  .hero { padding-block: 0 48px; }
+  .hero h1 { font-size: 60px; }
+  .seccion { padding-block: 24px; }
+  .seccion + .seccion { margin-top: 64px; }
 
   /* Cada tema: botón a la izquierda, frase a la derecha */
-  .tema { grid-template-columns: 420px 1fr; gap: 32px; }
+  .tema { grid-template-columns: 37% 1fr; gap: 0; min-height: 124px; padding: 18px 32px; }
   .tema .boton { font-size: 40px; }
   .tema p {
     font-size: 25px;
-    padding-left: 32px;
-    border-left: 1px solid rgba(162, 153, 121, 0.4);
+    padding-left: 48px;
+    border-left: 1px solid var(--filete);
+    min-height: 64px;
+    display: flex;
+    align-items: center;
   }
+
   .lema { font-size: 38px; }
 
   /* Dos paneles lado a lado */
-  .dos-paneles { grid-template-columns: 1.2fr 1fr; }
-  .panel { padding: 32px; }
-  .panel .etiqueta { font-size: 14px; }
-  .reflexion { font-size: 30px; }
+  .dos-paneles { grid-template-columns: 1.225fr 1fr; gap: 32px; }
+  .panel { padding: 32px; min-height: 626px; }
+  .carrusel { margin-top: 44px; }
+  .slide p { font-size: 35px; }
+  .imagen { margin-left: 42px; }
   .chats h2 { font-size: 30px; }
-  .chats .sub { font-size: 17px; }
+  .chats-cuerpo { padding: 80px 20px 0; }
   .chats-cuerpo h3 { font-size: 33px; }
-  .entrada { font-size: 17px; padding: 22px 20px; }
+  .chats-cuerpo p { font-size: 18px; }
+  .chats-cuerpo .reservado { margin-top: 56px; }
+  #expandir:checked + .chats { grid-column: 1 / -1; order: 3; min-height: 720px; }
 
+  /* Pie */
   .pie { font-size: 30px; padding-bottom: 40px; }
+  .pie a { font-size: 40px; }
+  .pie .copy { font-size: 18px; }
 }
 
 
-
+/* ---------- Para quien prefiere menos movimiento ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .tarjeta, .reflexion { animation: none; }
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
-
-

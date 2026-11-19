@@ -46,47 +46,59 @@
       <section class="seccion" aria-labelledby="s2">
           <span class="etiqueta" id="s2">02 / Comparte tu punto de vista</span>
           <h2 class="lema">Una idea puede abrir una conversación.</h2>
-
           <div class="dos-paneles">
-            <!-- Reflexión destacada -->
-            <div class="panel ">
-              
+            <!-- Reflexión destacada (carrusel solo con CSS) -->
+            <div class="panel reflexion">
+              <span class="etiqueta">Para reflexionar</span>
 
-              <div class="carrusel" id="carrusel" aria-roledescription="carrusel" aria-label="Para reflexionar">
-                <div class="slide activa">
-                  <p>La vida es como Minecraft: puedes tenerlo todo y aun así vivir en un agujero</p>
-                    <img src="imagenes/filosofo.png" alt="Rostro de un filósofo antiguo" >
-                  </button>
-                  <input type="file" accept="image/*" hidden>
-                  
-                </div>
-                <div class="slide">
-                  <p>El ser humano es el único animal que paga por existir</p>
-                    <img src="imagenes/filosofo.png" alt="Rostro de un filósofo antiguo">
-                  </button>
-                  <input type="file" accept="image/*" hidden>
-                </div>
+              <div class="carrusel" aria-label="Para reflexionar">
+                <input class="oculto" type="radio" name="reflexion" id="r1" checked aria-label="Reflexión 1">
+                <input class="oculto" type="radio" name="reflexion" id="r2" aria-label="Reflexión 2">
+                <input class="oculto" type="radio" name="reflexion" id="r3" aria-label="Reflexión 3">
 
-                <div class="slide">
-                  <p>¿Y si quienes gobiernan nuestra aldea no son los más preparados?</p>
-                    <img src="imagenes/filosofo.png" alt="Rostro de un filósofo antiguo">
-                  </button>
-                  <input type="file" accept="image/*" hidden>
+                <div class="slides">
+                  <div class="slide s1">
+                    <p>La vida es como Minecraft: puedes tenerlo todo y aun así vivir en un agujero</p>
+                    <figure class="imagen"><img src="imagenes/filosofo.png" alt="Rostro de un filósofo antiguo"></figure>
+                  </div>
+                  <div class="slide s2">
+                    <p>El ser humano es el único animal que paga por existir</p>
+                    <figure class="imagen"><img src="imagenes/filosofo.png" alt="Rostro de un filósofo antiguo"></figure>
+                  </div>
+                  <div class="slide s3">
+                    <p>¿Y si quienes gobiernan nuestra aldea no son los más preparados?</p>
+                    <figure class="imagen"><img src="imagenes/filosofo.png" alt="Rostro de un filósofo antiguo"></figure>
+                  </div>
                 </div>
 
                 <div class="controles">
-                  <button class="flecha" id="prev" type="button" aria-label="Reflexión anterior">←</button>
-                  <button class="flecha" id="next" type="button" aria-label="Reflexión siguiente">→</button>
-                  <div class="puntos" id="puntos"></div>
+                  <div class="flechas f1">
+                    <label class="flecha" for="r3" aria-label="Reflexión anterior">←</label>
+                    <label class="flecha" for="r2" aria-label="Reflexión siguiente">→</label>
+                  </div>
+                  <div class="flechas f2">
+                    <label class="flecha" for="r1" aria-label="Reflexión anterior">←</label>
+                    <label class="flecha" for="r3" aria-label="Reflexión siguiente">→</label>
+                  </div>
+                  <div class="flechas f3">
+                    <label class="flecha" for="r2" aria-label="Reflexión anterior">←</label>
+                    <label class="flecha" for="r1" aria-label="Reflexión siguiente">→</label>
+                  </div>
+                  <div class="puntos">
+                    <label class="punto" for="r1" aria-label="Reflexión 1"></label>
+                    <label class="punto" for="r2" aria-label="Reflexión 2"></label>
+                    <label class="punto" for="r3" aria-label="Reflexión 3"></label>
+                  </div>
                 </div>
               </div>
             </div>
 
             <!-- Chats · espacio para expansión -->
-            <div class="panel chats" id="chats">
+            <input class="oculto" type="checkbox" id="expandir" aria-label="Expandir conversaciones">
+            <div class="panel chats">
               <div class="chats-cab">
                 <h2>Conversaciones</h2>
-                <button class="btn-expandir" id="btn-chats" type="button" aria-expanded="false" aria-controls="chats">Expandir</button>
+                <label class="btn-expandir" for="expandir"><span class="t-exp">Expandir</span><span class="t-con">Contraer</span></label>
               </div>
               <p class="sub">Un espacio para intercambiar ideas.</p>
 
@@ -106,7 +118,5 @@
   <footer class="pie linea">
     <span class="copy">© 2026 Mi Proyecto. Todos los derechos reservados.</span>
   </footer>
-
-  <script src="js/main.js"></script>
 </body>
 </html>
