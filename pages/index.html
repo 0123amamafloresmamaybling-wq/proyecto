@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Punto de Vista</title>
+  <meta name="description" content="Punto de Vista: ¿todo depende del tono de color? Ideas, reflexiones y conversación desde la filosofía clásica.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="contenedor">
+    <nav class="nav" aria-label="Principal">
+      <a class="marca" href="index.html">Punto de Vista</a>
+      <ul>
+        <li><a href="contactos.html">Contactos</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <div class="eje">
+        <header class="hero">
+          <span class="etiqueta">Ideas / Reflexiones / Conversación</span>
+          <h1><span class="l1">Punto de Vista:</span> Todo depende del tono de color ?</h1>
+        </header>
+
+        <section class="seccion" aria-labelledby="s1">
+          <span class="etiqueta" id="s1">01 / Explora los temas</span>
+          <div class="temas">
+            <article class="tema">
+              <a class="boton" href="mundo-blanco.html">Mundo blanco</a>
+              <p>Quien solo vio paredes blancas cree que el mundo es blanco.</p>
+            </article>
+            <article class="tema">
+              <a class="boton" href="color-negro.html">Color negro</a>
+              <p>El negro es ausencia de luz, no ausencia de valor.</p>
+            </article>
+            <article class="tema">
+              <a class="boton" href="racismo-clasismo.html">Racismo o clasismo</a>
+              <p>Juzgar por la piel o la cuna es discutir con sombras.</p>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <section class="seccion" aria-labelledby="s2">
+          <span class="etiqueta" id="s2">02 / Comparte tu punto de vista</span>
+          <h2 class="lema">Una idea puede abrir una conversación.</h2>
+
+          <div class="dos-paneles">
+            <!-- Reflexión destacada -->
+            <div class="panel">
+              <div class="carrusel" aria-label="Para reflexionar">
+                <div class="slide activa">
+                  <p>La vida es como Minecraft: puedes tenerlo todo y aun así vivir en un agujero</p>
+                  <div class="imagen"><img src="img/filosofo.png" alt="Rostro de un filósofo antiguo"></div>
+                </div>
+                <div class="slide">
+                  <p>El ser humano es el único animal que paga por existir</p>
+                  <div class="imagen"><img src="img/filosofo.png" alt="Rostro de un filósofo antiguo"></div>
+                </div>
+
+                <div class="slide">
+                  <p>¿Y si quienes gobiernan nuestra aldea no son los más preparados?</p>
+                  <div class="imagen"><img src="img/filosofo.png" alt="Rostro de un filósofo antiguo"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Chats · espacio para expansión -->
+            <div class="panel chats" id="chats">
+              <div class="chats-cab">
+                <h2>Conversaciones</h2>
+                <button class="btn-expandir" id="btn-chats" type="button" aria-expanded="false" aria-controls="chats">Expandir</button>
+              </div>
+              <p class="sub">Un espacio para intercambiar ideas.</p>
+
+              <div class="chats-cuerpo">
+                <span class="etiqueta">Tu próxima conversación</span>
+                <h3>Cada perspectiva cuenta.</h3>
+                <p>Aquí podrás desplegar tus chats y continuar la conversación sobre los temas de la página.</p>
+                <span class="etiqueta reservado">Espacio reservado para el chat</span>
+                <div class="entrada" role="note">Escribe tu punto de vista…</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+  </div>
+
+  <footer class="pie linea">
+    <span class="copy">© 2026 Mi Proyecto. Todos los derechos reservados.</span>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+/* =====================================================
+   Punto de Vista — estilos de todo el sitio
+   Orden: 1 Base · 2 Páginas de temas · 3 Inicio
+          4 Nosotros/Contactos · 5 Artículo · 6 Celular
+   ===================================================== */
+
+/* ---------- Fuentes (archivos en la carpeta fonts/) ---------- */
+@font-face { font-family: 'Tinos'; font-weight: 400; src: url('../fonts/tinos-400.woff') format('woff'); }
+@font-face { font-family: 'Tinos'; font-weight: 700; src: url('../fonts/tinos-700.woff') format('woff'); }
+@font-face { font-family: 'Inter'; font-weight: 400; src: url('../fonts/inter-400.woff') format('woff'); }
+@font-face { font-family: 'Charm'; src: local('Charm'), url('../fonts/charm-400.ttf') format('truetype'); }
+
+/* ---------- 1. BASE ---------- */
+:root {
+  --fondo: #14213D;
+  --panel: #1B2A46;
+  --dorado: #C5A46D;
+  --linea: #A29979;
+  --letra: #F7E9F9;
+  --gris: #D9D9D9;
+  --tenue: #8C6A6A;
+  --rosa: #B97979;
+  --filete: rgba(162, 153, 121, 0.4);
+  --serif: 'Tinos', 'Times New Roman', serif;
+  --sans: 'Inter', Arial, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--serif);
+  color: white;
+  background: var(--fondo);
+}
+
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--dorado); }
+img { max-width: 100%; display: block; }
+main { flex: 1; }
+
+/* Caja centrada con márgenes a los lados */
+.contenedor { max-width: 1440px; margin: 0 auto; padding: 0 5vw; }
+
+/* Texto pequeño en mayúsculas */
+.etiqueta {
+  display: block;
+  font: 14px var(--sans);
+  text-transform: uppercase;
+  color: var(--dorado);
+}
+
+/* Pie de página */
+.pie {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 5vw;
+  color: var(--dorado);
+}
+.pie a { color: white; font-size: 28px; }
+.pie a:hover { color: var(--dorado); }
+.pie .copy { font-size: 16px; }
+.pie.linea { border-top: 1px solid var(--filete); }
+
+/* ---------- 2. PÁGINAS DE TEMAS (fondo con imagen) ---------- */
+/* La imagen va en ::before fijo para que funcione también en iPhone */
+body.fondo::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+}
+.fondo-mundo::before   { background-image: linear-gradient(rgba(20,33,61,.72), rgba(20,33,61,.72)), url('../img/a09f02.jpg'); }
+.fondo-negro::before   { background-image: linear-gradient(rgba(20,33,61,.70), rgba(20,33,61,.70)), url('../img/8.jpg'); }
+.fondo-racismo::before { background-image: linear-gradient(rgba(20,33,61,.72), rgba(20,33,61,.72)), url('../img/199041-3-primary.webp'); }
+
+.encabezado { padding-top: 50px; }
+.titulo { font-size: 40px; font-weight: 400; }
+.titulo.grande { font-size: 60px; }
+.titulo .tenue { color: var(--tenue); }
+.titulo .tenue.claro { color: var(--gris); }
+
+/* Línea dorada bajo el título */
+.barra {
+  display: block;
+  width: 600px;
+  max-width: 90%;
+  height: 6px;
+  margin-top: 14px;
+  background: linear-gradient(90deg, var(--linea) 60%, transparent);
+}
+
+.contenedor > main { padding: 50px 0; }
+.texto { max-width: 1200px; font-size: 34px; line-height: 1.2; }
+.texto p + p { margin-top: 1em; }
+
+/* ---------- 3. INICIO ---------- */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 30px 0 14px;
+  border-bottom: 1px solid var(--filete);
+}
+.nav .marca { font-size: 28px; color: var(--dorado); }
+.nav ul { display: flex; gap: 50px; list-style: none; font-size: 22px; color: var(--letra); }
+
+/* Barra dorada vertical a la izquierda del título */
+.eje { position: relative; }
+.eje::before {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: 56px;
+  bottom: 0;
+  width: 4px;
+  background: var(--dorado);
+}
+
+.hero { padding-bottom: 40px; }
+.hero h1 { margin-top: 14px; font-size: 56px; font-weight: 400; line-height: 1.35; color: var(--dorado); }
+.hero .l1 { display: block; max-width: 827px; border-bottom: 4px solid var(--dorado); }
+
+.seccion { padding: 20px 0; }
+.seccion + .seccion { margin-top: 50px; }
+
+/* Tarjetas de los tres temas */
+.temas { display: grid; gap: 20px; margin-top: 18px; }
+
+.tema {
+  position: relative;
+  display: grid;
+  grid-template-columns: 37% 1fr;
+  align-items: center;
+  min-height: 124px;
+  padding: 18px 30px;
+  background: var(--panel);
+  border-radius: 14px;
+}
+.tema:first-child .boton { color: var(--gris); }
+.tema .boton { justify-self: start; font-size: 38px; padding: 4px 22px 4px 0; border-radius: 22px; }
+.tema .boton::after { content: ""; position: absolute; inset: 0; }  /* toda la tarjeta es clicable */
+.tema:hover .boton { background: var(--dorado); color: white; padding-left: 22px; }
+.tema p { font-size: 24px; line-height: 1.35; color: var(--letra); border-left: 1px solid var(--filete); padding-left: 40px; }
+
+.lema { margin: 10px 0 22px; font-size: 36px; font-weight: 400; line-height: 1.45; color: var(--letra); }
+
+/* Dos paneles: carrusel y conversaciones */
+.dos-paneles { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; }
+.panel { min-height: 600px; padding: 30px; background: var(--panel); border-radius: 20px; }
+
+/* Carrusel */
+.carrusel { display: flex; flex-direction: column; height: 100%; margin-top: 30px; }
+.slide { display: none; }
+.slide.activa { display: block; }
+.slide p { max-width: 600px; min-height: 2.3em; font-size: 34px; line-height: 1.15; }
+.imagen { width: 368px; max-width: 78%; margin: 10px 0 0 40px; }
+
+
+/* Conversaciones */
+.btn-expandir { color: var(--dorado); background: none; border: 1px solid var(--dorado); border-radius: 10px; font: 16px var(--sans); cursor: pointer; }
+.btn-expandir:hover { background: var(--dorado); color: var(--fondo); }
+.chats { display: flex; flex-direction: column; border: 1px solid var(--linea); }
+.chats-cab { display: flex; justify-content: space-between; align-items: center; }
+.chats h2 { font-size: 30px; font-weight: 400; color: var(--letra); }
+.btn-expandir { min-height: 44px; padding: 0 20px; font-size: 16px; }
+.chats .sub { padding: 4px 0 16px; border-bottom: 1px solid var(--filete); font: 17px var(--sans); color: var(--letra); }
+.chats-cuerpo { flex: 1; display: flex; flex-direction: column; padding-top: 60px; }
+.chats-cuerpo h3 { margin: 10px 0 8px; font-size: 32px; font-weight: 400; color: var(--letra); }
+.chats-cuerpo p { max-width: 28em; font: 18px/1.45 var(--sans); color: var(--letra); }
+.reservado { margin-top: 40px; }
+.entrada { margin-top: auto; padding: 22px 20px; background: var(--fondo); border-radius: 12px; font: 17px var(--sans); color: var(--letra); }
+
+.chats.expandido { grid-column: 1 / -1; min-height: 720px; }  /* al expandir ocupa todo el ancho */
+
+/* ---------- 4. NOSOTROS Y CONTACTOS ---------- */
+body.oscuro { background: #222; }
+
+.marco {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 1296px;
+  margin: 40px auto;
+  padding: 40px 40px 0;
+  border: 2px solid var(--gris);
+}
+.marco .titulo { color: var(--dorado); }
+.marco main { padding: 50px 0; }
+.marco .pie { padding: 20px 0; }
+
+.bloque + .bloque { margin-top: 30px; }
+.bloque h2 { font-size: 28px; font-weight: 400; color: var(--rosa); }
+.bloque.fuerte h2 { font-weight: 700; }
+.bloque p { max-width: 1000px; font-size: 28px; line-height: 1.2; }
+
+.nombre { margin-bottom: 30px; font-family: 'Charm', cursive; font-size: 50px; text-align: center; color: var(--dorado); }
+.datos { display: grid; gap: 24px; list-style: none; font-size: 28px; }
+.datos .k { color: var(--dorado); }
+.datos a { text-decoration: underline; overflow-wrap: anywhere; }
+
+/* ---------- 5. ARTÍCULO ---------- */
+.indice {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  padding: 10px 5vw;
+  background: rgba(20, 33, 61, .96);
+  border-bottom: 1px solid var(--filete);
+  font: 14px var(--sans);
+}
+.indice a { padding: 8px 0; color: var(--letra); }
+.indice .inicio { margin-right: auto; color: var(--dorado); }
+
+.articulo { max-width: 780px; padding-top: 50px; padding-bottom: 50px; }
+.articulo .autor { font: 14px var(--sans); text-transform: uppercase; color: var(--dorado); }
+.articulo h1 { margin: 10px 0; font-size: 42px; font-weight: 400; line-height: 1.2; color: var(--dorado); }
+.articulo h2 { margin: 56px 0 16px; padding-top: 18px; border-top: 1px solid var(--filete); font-size: 30px; font-weight: 400; line-height: 1.25; color: var(--dorado); scroll-margin-top: 70px; }
+.articulo p { margin-top: 1.1em; font-size: 20px; line-height: 1.65; color: var(--letra); }
+.articulo .destaque { color: var(--dorado); font-style: italic; }
+.articulo .cierre { padding-left: 18px; border-left: 3px solid var(--dorado); color: white; }
+
+/* ---------- 6. CELULAR Y TABLET ---------- */
+@media (max-width: 900px) {
+  .dos-paneles { grid-template-columns: 1fr; }
+  .panel { min-height: 420px; }
+  .chats.expandido { min-height: 560px; }
+  .tema { grid-template-columns: 1fr; gap: 10px; }
+  .tema p { border-left: 0; padding-left: 0; }
+  .eje::before { display: none; }
+}
+
+@media (max-width: 600px) {
+  .titulo, .marco .titulo { font-size: 30px; }
+  .titulo.grande { font-size: 36px; }
+  .texto { font-size: 22px; }
+  .hero h1 { font-size: 30px; }
+  .lema { font-size: 26px; }
+  .tema .boton { font-size: 28px; }
+  .tema p, .bloque p, .datos { font-size: 18px; }
+  .bloque h2 { font-size: 20px; }
+  .slide p { font-size: 24px; }
+  .nombre { font-size: 32px; }
+  .nav ul { gap: 20px; font-size: 17px; }
+  .pie { flex-direction: column; text-align: center; }
+  .pie a { font-size: 20px; }
+  .pie .copy { order: 3; font-size: 14px; }
+  .marco { padding: 18px 16px 0; }
+}

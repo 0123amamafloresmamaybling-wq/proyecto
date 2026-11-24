@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conversaciones · Punto de Vista</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="contenedor">
+    <nav class="nav" aria-label="Principal">
+      <a class="marca" href="index.html">Punto de Vista</a>
+      <ul>
+        <li><a href="contactos.html">Contactos</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <span class="etiqueta">Comparte tu punto de vista</span>
+      <h1 class="lema">Conversaciones</h1>
+
+      <div class="chat">
+        <!-- Lista de temas -->
+        <div class="chat-temas" id="temas">
+          <button type="button" class="activo" data-tema="Mundo blanco">Mundo blanco</button>
+          <button type="button" data-tema="Color negro">Color negro</button>
+          <button type="button" data-tema="Racismo o clasismo">Racismo o clasismo</button>
+        </div>
+
+        <!-- Mensajes y formulario -->
+        <div class="chat-caja">
+          <h2 id="titulo-chat">Mundo blanco</h2>
+          <div class="mensajes" id="mensajes"></div>
+
+          <form class="chat-form" id="form">
+            <input type="text" id="nombre" placeholder="Tu nombre" maxlength="20" required>
+            <input type="text" id="texto" placeholder="Escribe tu punto de vista…" maxlength="300" required>
+            <button type="submit">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer class="pie linea">
+    <a href="index.html">←Atrás</a>
+    <span class="copy">© 2026 Mi Proyecto. Todos los derechos reservados.</span>
+  </footer>
+
+  <script src="js/chat.js"></script>
+</body>
+</html>
