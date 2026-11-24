@@ -42,7 +42,7 @@ img { max-width: 100%; display: block; }
 main { flex: 1; }
 
 /* Caja centrada con márgenes a los lados */
-.contenedor { max-width: 1440px; margin: 0 auto; padding: 0 5vw; }
+.contenedor { width: 100%; min-width: 0; max-width: 1440px; margin: 0 auto; padding: 0 5vw; }
 
 /* Texto pequeño en mayúsculas */
 .etiqueta {
@@ -153,7 +153,7 @@ body.fondo::before {
 
 /* Dos paneles: carrusel y conversaciones */
 .dos-paneles { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; }
-.panel { min-height: 600px; padding: 30px; background: var(--panel); border-radius: 20px; }
+.panel { min-width: 0; min-height: 600px; padding: 30px; background: var(--panel); border-radius: 20px; }
 
 /* Carrusel */
 .carrusel { display: flex; flex-direction: column; height: 100%; margin-top: 30px; }
@@ -269,7 +269,7 @@ body.oscuro { background: #222; }
 
 /* ---------- 7. CELULAR Y TABLET ---------- */
 @media (max-width: 900px) {
-  .dos-paneles { grid-template-columns: 1fr; }
+  .dos-paneles { grid-template-columns: minmax(0, 1fr); }
   .panel { min-height: 420px; }
   .chats.expandido { min-height: 560px; }
   .tema { grid-template-columns: 1fr; gap: 10px; }
